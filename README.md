@@ -1,4 +1,4 @@
-# Library_Mangement_System
+# Library Mangement System by leogao
 Description
 This SQL programming project involves the creation of a database host application that
 interfaces with a backend SQL database implementing a Library Management System. Users of
