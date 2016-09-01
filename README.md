@@ -28,9 +28,7 @@ software libraries : mysql-connector-java-5.1.38-bin.jar
 database : MySQL
 
 ## design architecture
-<img src="https://github.com/Leogaogithub/Library_Mangement_System/edit/master/class digram layer.png" width="350">
-
-
+![](/class digram layer.png)
 
 ## design mode
 - 1. model
@@ -62,7 +60,8 @@ The LibraryController accepts input and converts it to commands for the model or
 controller in our system. This could make our model reusable.
 
 ## concerns about this project
-- 1. ** Why not keep SqlStatement in BookSearch, BookCheckOut, BookCheckIn, BorrowerManagement, Fines ? **
+**Why not keep SqlStatement in BookSearch, BookCheckOut, BookCheckIn, BorrowerManagement, Fines ?**
+
 If SqlStatements is included in these five models, it could make them care about more unrelated
 things to becoming lower cohesive. According to GRASP pattern, we could use pure
 Fabrication to create new class SqlGenerator, which could manage all the sql statement make
@@ -71,7 +70,8 @@ cohesive. In this case, it make code manageable, If database schema changing, we
 looking for codes in SqlGenerator. Otherwise, we have to look through the entire code of our
 project.
 
-- 2. ** Why not keep SqlStatement in databaseController? **
+**Why not keep SqlStatement in databaseController?**
+
 If we keep SqlStatement in databaseController, It could make databaseController be very busy
 and make the system not easy to maintain. If we divide it into databaseController and
 SqlGenerator, then we could easily change MySql into any other Database, because most of sql
