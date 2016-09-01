@@ -6,11 +6,11 @@ the system are understood to be librarians (not book borrowers).
 
 Following is a brief description about the working of the system:
 
-Search a Book - Allows the user to search any book given any combination of Book id and/or Book Title and /or Book Author. 
-Checkout a Book – Allows a user to check-out the book from a branch based on its availability and book borrowers credibility. 
-Checkin a Book - Allows a user to check-in the book. This feature first searches for all the book loans the borrower has taken which are not checked-in yet and then allows the user to check in the selected the book. 
-Add New Borrower - Allows the user to add a new borrower to the library loan system. 
-Fine - This feature allows two types of fine computation. 
+- Search a Book - Allows the user to search any book given any combination of Book id and/or Book Title and /or Book Author. 
+- Checkout a Book – Allows a user to check-out the book from a branch based on its availability and book borrowers credibility. 
+- Checkin a Book - Allows a user to check-in the book. This feature first searches for all the book loans the borrower has taken which are not checked-in yet and then allows the user to check in the selected the book. 
+- Add New Borrower - Allows the user to add a new borrower to the library loan system. 
+- Fine - This feature allows two types of fine computation. 
 
 ## Installation
 we could import this file system into eclipse. 
@@ -20,15 +20,20 @@ Then we could export jar by select export type as java. Runable JAR file.
 
 It should include any technical dependencies (language, frameworks, platform, OS,
 software libraries, software versions, etc.).
+language : java 
+compile : JavaSE-1.8 
+frameworks : Swing 
+platform : windows 10, Linux 
+software libraries : mysql-connector-java-5.1.38-bin.jar 
+database : MySQL
 
-language: java
-JavaSE-1.8
-frameworks: Swing. 
-platform: windows 10, Linux.
-software libraries: mysql-connector-java-5.1.38-bin.jar
-database: MySQL
+## design architecture
+<img src="https://github.com/Leogaogithub/Library_Mangement_System/edit/master/class digram layer.png" width="350">
+
+
+
 ## design mode
-1. model
+- 1. model
 
 The model directly manages the data, logic and rules of the application. The model stores data
 that is retrieved according to commands from the controller and displayed in the view.
@@ -44,20 +49,20 @@ DataBaseController provide api to access and retrieve data from MySql.
 SqlGenerator is responsible for providing sql statement for other models.
 DataBaseBuilder is responsible for parse information for inserting value into tables of database.
 DataReader is responsible for retreiving information from csv files.
-2. View
+- 2. View
 
 A view can be any output representation of information, A view generates an output presentation
 to the user based on changes in the model. There are five views in our system.
 BookCheckOutJPanel, BookCheckInJPanel, BorrowerMangementJPanel, FinesJPanel,
 BookSearchJPanel. And LibraryView composites all views. Users interact on these views, they
 send event or message to Librarycontroller, indirectly call method in model layer.
-3. Controller
+- 3. Controller
 
 The LibraryController accepts input and converts it to commands for the model or view. We use
 controller in our system. This could make our model reusable.
 
 ## concerns about this project
-1. Why not keep SqlStatement in BookSearch, BookCheckOut, BookCheckIn, BorrowerManagement, Fines
+- 1. ** Why not keep SqlStatement in BookSearch, BookCheckOut, BookCheckIn, BorrowerManagement, Fines ? **
 If SqlStatements is included in these five models, it could make them care about more unrelated
 things to becoming lower cohesive. According to GRASP pattern, we could use pure
 Fabrication to create new class SqlGenerator, which could manage all the sql statement make
@@ -66,7 +71,7 @@ cohesive. In this case, it make code manageable, If database schema changing, we
 looking for codes in SqlGenerator. Otherwise, we have to look through the entire code of our
 project.
 
-2. Why not keep SqlStatement in databaseController?
+- 2. ** Why not keep SqlStatement in databaseController? **
 If we keep SqlStatement in databaseController, It could make databaseController be very busy
 and make the system not easy to maintain. If we divide it into databaseController and
 SqlGenerator, then we could easily change MySql into any other Database, because most of sql
