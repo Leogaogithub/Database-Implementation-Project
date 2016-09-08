@@ -76,3 +76,7 @@ If we keep SqlStatement in databaseController, It could make databaseController 
 and make the system not easy to maintain. If we divide it into databaseController and
 SqlGenerator, then we could easily change MySql into any other Database, because most of sql
 statement in different database is uniform.
+
+## quick start user guide for librarian
+
+[embed]https://github.com/Leogaogithub/Library_Mangement_System/blob/master/quick%20start%20user%20guide%20for%20librarian%20system%20users.pdf[/embed]
